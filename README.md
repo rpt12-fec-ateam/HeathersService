@@ -1,2 +1,2 @@
 # HeathersService
-Repo for Description Module Service
+Repo for Ingredients Module Service
