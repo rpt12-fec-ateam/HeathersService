@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "seedDB": "node db/seed.js"
+    "seedDB": "node db/seedDB.js"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
