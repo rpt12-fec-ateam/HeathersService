@@ -26,7 +26,8 @@ connection.query('CREATE DATABASE IF NOT EXISTS dh', function(err, data) {
     }
   });
   
-  connection.query(`CREATE TABLE IF NOT EXISTS ingredients (id int NOT NULL AUTO_INCREMENT,
+  connection.query(`CREATE TABLE IF NOT EXISTS ingredients (
+    id int NOT NULL AUTO_INCREMENT,
     dishName VARCHAR(50),
     keyIngredients VARCHAR(300),
     ingredients VARCHAR(400),
