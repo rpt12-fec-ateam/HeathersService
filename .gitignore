@@ -1,0 +1,6 @@
+### NPM ###
+node_modules
+
+## DB keys
+db/config.js
+
