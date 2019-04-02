@@ -7,12 +7,12 @@ const db = require('../db/index.js');
 const connection = db.connection;
 
 const app = express();
-app.use(express.static(__dirname + '../public'));
+app.use(express.static(path.join(__dirname + '/../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-app.get('/ingredients', function (req, res) {
-  res.status(200).send('Success');
+app.get('/test', function (req, res) {
+  res.status(200).send('Success the server is working I think :-)');
 });
 
 app.listen(6001, function() {

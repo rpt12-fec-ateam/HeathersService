@@ -6,14 +6,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: []
+      recipes: ['Test Recipe']
     }
-    console.log('Data in App state --->', data);
   }
 
   getData() {
     $.ajax ({
-      url: '',
+      url: '/test',
       method: 'GET',
       error: (err) => {
         if (err) {
@@ -35,6 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h3>THIS IS A RENDER TEST</h3>
         <div>{this.state.recipes}</div>
       </div>
     )
@@ -42,5 +42,5 @@ class App extends React.Component {
 
 }
 
-ReactDOM.render(<App></App>,document.getElementById('app'));
+ReactDOM.render(<App></App>, document.getElementById('app'));
 

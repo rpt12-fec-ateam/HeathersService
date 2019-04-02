@@ -2,8 +2,8 @@ const mysql = require('mysql');
 const mysqlConfig = require('./config.js');
 const connection = mysql.createConnection(mysqlConfig);
 
-connection.connect(error => {
-    if (error) {
+connection.connect(err => {
+    if (err) {
       console.log('DB ERROR', err);
     } else {
       console.log('Connected to DB!')
@@ -40,6 +40,8 @@ connection.query('CREATE DATABASE IF NOT EXISTS dh', function(err, data) {
       console.log('Created ingredients table in dh DB')
     }
   });
+
+
   
 
   module.exports.connection = connection;
