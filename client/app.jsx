@@ -34,8 +34,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h3>THIS IS A RENDER TEST</h3>
-        <div>{this.state.recipes}</div>
+        <div>
+            
+        <h3>Key Ingredients</h3>
+          <div>{this.state.recipes}</div>  
+        </div>
+        <div>
+          <h3>Ingredients & Nutrition Facts</h3>
+          <div>{this.state.recipes}</div>  
+        </div>
+    
       </div>
     )
   }

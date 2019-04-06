@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "seedDB": "node db/seedDB.js",
+    "seedDB": "node db/seedDB.js --max-old-space-size=4096",
     "test": "mocha test/index.js --bail"
   },
   "devDependencies": {

@@ -10,6 +10,14 @@ connection.connect(err => {
     }
   });
 
+connection.query('DROP DATABASE IF EXISTS dh', (err, data) => {
+  if(err) {
+    console.log('Issue dropping dh DB');
+  } else {
+    console.log('Successfully dropped dh DB');
+  }
+});
+
 connection.query('CREATE DATABASE IF NOT EXISTS dh', function(err, data) {
     if(err) {
       console.log('DB ERROR creating dh', err)
@@ -26,14 +34,7 @@ connection.query('CREATE DATABASE IF NOT EXISTS dh', function(err, data) {
     }
   });
   
-  connection.query(`CREATE TABLE IF NOT EXISTS ingredients (
-    id int NOT NULL AUTO_INCREMENT,
-    dishName VARCHAR(50),
-    keyIngredients VARCHAR(300),
-    ingredients VARCHAR(400),
-    nutritionFacts VARCHAR(400),
-    photoUrl VARCHAR(200),
-    category VARCHAR(50)`, function(err, data) {
+  connection.query(`CREATE TABLE IF NOT EXISTS ingredients (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, dishName TEXT, keyIngredients TEXT, ingredients TEXT, nutritionFacts TEXT, photoUrl TEXT, category TEXT)`, function(err, data) {
     if (err) {
       console.log('ERROR', err)
     } else {
