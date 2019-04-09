@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import _ from 'underscore';
+import Key from './keyIngredients.jsx';
+import Nut from './nutFacts.jsx';
+import Dir from './directions.jsx';
+import Photo from './photo.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: ['Test Recipe']
+      recipes: [],
+      recipe: null
     }
   }
 
@@ -21,8 +27,12 @@ class App extends React.Component {
       },
       success: (data) => {
         console.log('results from getData in client: --> ', data);
+        var index= _.random(data.length - 1);
+        console.log('index', index)
+        console.log('item', data[index])
         this.setState ({
-          recipes: data
+          recipes: data,
+          recipe: data[index]
         });
       }
     });
@@ -34,14 +44,43 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        
         <div>
-            
-        <h3>Key Ingredients</h3>
-          <div>{this.state.recipes}</div>  
+          <div>{this.state.recipe
+            ?
+            <div><Photo data={this.state.recipe}/></div>
+            :
+            null}
+          </div>  
         </div>
+
         <div>
-          <h3>Ingredients & Nutrition Facts</h3>
-          <div>{this.state.recipes}</div>  
+        <h2>Key Ingredients</h2>
+          <div>{this.state.recipe
+            ?
+            <div><Key data={this.state.recipe}/></div>
+            :
+            null}
+          </div>  
+        </div>
+
+        <div>
+          <h2>Ingredients & Nutrition Facts</h2>
+          <div>{this.state.recipe
+            ?
+            <div><Nut data={this.state.recipe}/></div>
+            :
+            null}
+          </div> 
+        </div>
+
+        <div>
+          <div>{this.state.recipe
+            ?
+            <div><Dir data={this.state.recipe}/></div>
+            :
+            null}
+          </div> 
         </div>
     
       </div>
