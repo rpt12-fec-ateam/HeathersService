@@ -1,4 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Box = styled.div`
+  height: 300px;
+  width: 300px;
+  float: left;
+  margin-top: 0px;
+`;
+
+const Img = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+`;
+
 
 const recipePhoto = (props) => {
   const url = props.data.photoUrl;
@@ -6,8 +20,15 @@ const recipePhoto = (props) => {
 
   return (
     <div>
-      <div><img src={url}/></div>
+      <Box>
+      <div>
+      <Img src={url}>
+      {/* <img src={url}/> */}
+      </Img>
+      </div>
+      </Box>
     </div>
+   
   )
 }
 

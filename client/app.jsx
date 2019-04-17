@@ -6,14 +6,104 @@ import Key from './keyIngredients.jsx';
 import Nut from './nutFacts.jsx';
 import Dir from './directions.jsx';
 import Photo from './photo.jsx';
+import styled from 'styled-components';
 
-class App extends React.Component {
+const Block = styled.div`
+  font-family: Sailec, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: lighter;
+`;
+
+const Titles = styled.div`
+  @import url('https://fonts.googleapis.com/css?family=Heebo:800');
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 30px;
+`;
+
+const TitlesTop = styled.div`
+  @import url('https://fonts.googleapis.com/css?family=Heebo:800');
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 50px;
+`;
+
+const HalfPos = styled.div`
+  margin-left: 45%;
+
+  &.open {
+    height: auto;
+    margin-left: 0%;
+  }
+
+  &.closed {
+    height: 0;
+    overflow: hidden;
+  }
+`;
+
+
+
+class Heather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       recipes: [],
-      recipe: null
+      recipe: null,
+      keyOpen: false,
+      ingsOpen: false,
+      dirOpen1: false,
+      dirOpen2: false
     }
+    this.handleKeyClick = this.handleKeyClick.bind(this);
+    this.handleIngClick = this.handleIngClick.bind(this);
+    this.handleDir1Click = this.handleDir1Click.bind(this);
+    this.handleDir2Click = this.handleDir2Click.bind(this);
+  }
+
+  handleKeyClick(e) {
+    e.preventDefault();
+    console.log('Key Ingredients was clicked!', this);
+    this.setState ({
+      keyOpen: !this.state.keyOpen,
+      ingsOpen: false,
+      dirOpen1: false,
+      dirOpen2: false
+    });
+  }
+
+  handleIngClick(e) {
+    e.preventDefault();
+    this.setState ({
+      keyOpen: false,
+      ingsOpen: !this.state.ingsOpen,
+      dirOpen1: false,
+      dirOpen2: false
+    });
+  }
+
+  handleDir1Click(e) {
+    e.preventDefault();
+    this.setState ({
+      keyOpen: false,
+      ingsOpen: false,
+      dirOpen1: !this.state.dirOpen1,
+      dirOpen2: false
+    });
+  }
+
+  handleDir2Click(e) {
+    e.preventDefault();
+    this.setState ({
+      dirOpen2: !this.state.dirOpen2,
+      keyOpen: false,
+      ingsOpen: false,
+      dirOpen1: false,
+      
+    });
   }
 
   getData() {
@@ -43,8 +133,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        
+      <div className="row blend-ingredients">
+        <Block>
         <div>
           <div>{this.state.recipe
             ?
@@ -55,39 +145,43 @@ class App extends React.Component {
         </div>
 
         <div>
-        <h2>Key Ingredients</h2>
+        <TitlesTop>
+        <HalfPos onClick={this.handleKeyClick}>Key Ingredients               -</HalfPos>
+        </TitlesTop>
           <div>{this.state.recipe
             ?
-            <div><Key data={this.state.recipe}/></div>
+            <HalfPos className={this.state.keyOpen ? 'open' : 'closed'}><Key data={this.state.recipe}/></HalfPos>
             :
             null}
           </div>  
         </div>
 
         <div>
-          <h2>Ingredients & Nutrition Facts</h2>
-          <div>{this.state.recipe
+          <Titles>
+          <HalfPos onClick={this.handleIngClick}>Ingredients & Nutrition Facts -</HalfPos>
+          </Titles>
+          <HalfPos className={this.state.ingsOpen ? 'open' : 'closed'}>{this.state.recipe
             ?
-            <div><Nut data={this.state.recipe}/></div>
+            <div ><Nut data={this.state.recipe}/></div>
             :
             null}
-          </div> 
+          </HalfPos> 
         </div>
 
         <div>
           <div>{this.state.recipe
             ?
-            <div><Dir data={this.state.recipe}/></div>
+            <div><Dir clickFunc1={this.handleDir1Click} clickFunc2={this.handleDir2Click} data={this.state.recipe} one={this.state.dirOpen1} two={this.state.dirOpen2}/></div>
             :
             null}
           </div> 
         </div>
-    
+      </Block>
       </div>
     )
   }
 
 }
 
-ReactDOM.render(<App></App>, document.getElementById('app'));
+ReactDOM.render(<Heather></Heather>, document.getElementById('heather'));
 
