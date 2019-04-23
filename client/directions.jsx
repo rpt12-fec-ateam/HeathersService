@@ -49,7 +49,7 @@ const directions = (props) => {
       <div>
         <Block>
         <div>
-          <Titles onClick={click1}>How To Heat</Titles>
+          <Titles onClick={click1}>How To Heat -</Titles>
         </div>
         <HalfPos className={one ? 'open' : 'closed'}>{heatSoup.split('\n').map((line, i) => {
             return <div>{line}</div>
