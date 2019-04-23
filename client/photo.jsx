@@ -5,7 +5,7 @@ const Box = styled.div`
   height: 300px;
   width: 300px;
   float: left;
-  margin-top: 0px;
+  margin-top: 0 px;
 `;
 
 const Img = styled.img`
@@ -23,7 +23,6 @@ const recipePhoto = (props) => {
       <Box>
       <div>
       <Img src={url}>
-      {/* <img src={url}/> */}
       </Img>
       </div>
       </Box>

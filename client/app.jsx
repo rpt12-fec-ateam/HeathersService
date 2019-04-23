@@ -15,6 +15,11 @@ const Block = styled.div`
   font-weight: lighter;
 `;
 
+const ImageStyle = styled.img`
+  width: 100%;
+  height: auto;
+`;
+
 const Titles = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Heebo:800');
   font-family: 'Heebo', sans-serif;
@@ -102,7 +107,6 @@ class Heather extends React.Component {
       keyOpen: false,
       ingsOpen: false,
       dirOpen1: false,
-      
     });
   }
 
@@ -134,6 +138,7 @@ class Heather extends React.Component {
   render() {
     return (
       <div className="row blend-ingredients">
+        <ImageStyle src="https://i.imgur.com/vQvmNF8.jpg"></ImageStyle>
         <Block>
         <div>
           <div>{this.state.recipe
@@ -176,12 +181,13 @@ class Heather extends React.Component {
             null}
           </div> 
         </div>
-      </Block>
+        </Block>
+        <ImageStyle src="https://i.imgur.com/UdZzEDs.jpg"></ImageStyle>
       </div>
     )
   }
-
-}
+  
+};
 
 ReactDOM.render(<Heather></Heather>, document.getElementById('heather'));
 
