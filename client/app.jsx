@@ -138,7 +138,6 @@ class Heather extends React.Component {
   render() {
     return (
       <div className="row blend-ingredients">
-        <ImageStyle src="https://i.imgur.com/vQvmNF8.jpg"></ImageStyle>
         <Block>
         <div>
           <div>{this.state.recipe
@@ -182,7 +181,6 @@ class Heather extends React.Component {
           </div> 
         </div>
         </Block>
-        <ImageStyle src="https://i.imgur.com/UdZzEDs.jpg"></ImageStyle>
       </div>
     )
   }
