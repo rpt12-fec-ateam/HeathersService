@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname + '/../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-app.get('/test', function (req, res) {
+app.get('/ingredients', function (req, res) {
   // res.status(200).send('Success the server is working I think :-)');
   connection.query('SELECT * FROM ingredients', (err, data) => {
     if (err) {

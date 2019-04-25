@@ -112,7 +112,7 @@ class Heather extends React.Component {
 
   getData() {
     $.ajax ({
-      url: '/test',
+      url: '/ingredients',
       method: 'GET',
       error: (err) => {
         if (err) {
@@ -151,7 +151,7 @@ class Heather extends React.Component {
 
         <div>
         <TitlesTop>
-        <HalfPos onClick={this.handleKeyClick}>Key Ingredients               -</HalfPos>
+        <HalfPos onClick={this.handleKeyClick}>Key Ingredients -</HalfPos>
         </TitlesTop>
           <div>{this.state.recipe
             ?
